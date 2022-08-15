@@ -3,10 +3,10 @@ export function getFullYear () {
     return d.getFullYear();
 }
 
-export function getFooterCopy (isIndex = true) {
+export function getFooterCopy (isIndex) {
     if (isIndex) {
-        return console.log( "Holberton School" )
+        console.log( "Holberton School" )
     } else  {
-        return console.log( "Holberton School main dashboard" )
+        console.log( "Holberton School main dashboard" )
     }
 }

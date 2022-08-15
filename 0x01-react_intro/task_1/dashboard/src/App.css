@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: none;
 }
 
 /**
@@ -14,17 +14,6 @@
   }
 }
 */
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 /**
 .App-link {
   color: #61dafb;
@@ -39,3 +28,38 @@
   }
 }
 */
+
+.App-header {
+  background-color: #ffffff;
+  color: white;
+  border-bottom: 2px solid #ec1506;
+}
+
+img {
+  width: 10%;
+  height: 10%;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  color: #ec1506;
+  position: relative;
+  float: right;
+  left: -68vw;
+  top: 4vh;
+}
+
+.App-body {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: small;
+  border-bottom: 2px solid #ec1506;
+  box-sizing: content-box;
+  height: 65vh;
+}
+
+.App-footer {
+  font-family: Arial, Helvetica, sans-serif;
+  font-style: italic;
+  font-size: small;
+  text-align: center;
+}
