@@ -1,7 +1,7 @@
 import React from 'react'
 import './Notifications.css'
 
-const notify= () => {
+const Notifications= () => {
    return (
    <div className='Notifications'>
         <p> Here is a list of notifications</p>
@@ -9,4 +9,4 @@ const notify= () => {
    )
 }
 
-export default notify;
+export default Notifications;
