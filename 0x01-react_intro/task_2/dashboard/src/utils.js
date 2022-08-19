@@ -3,19 +3,17 @@ export function getFullYear () {
     return d.getFullYear();
 }
 
-export function getFooterCopy () {
-    if (true) {
-        let result;
-        result = console.log ( "Holberton School" );
+export function getFooterCopy (isIndex) {
+    if (isIndex) {
+        let result="Holberton School";
         return result;
     } else  {
-        let result;
-        result = console.log ( "Holberton School main dashboard" );
+        let result="Holberton School main dashboard";
         return result;
     }
 }
 
 export function getLatestNotification () {
-    let result = console.log ('<strong>Urgent requirement</strong> - complete by EOD');
+    let result ='<strong>Urgent requirement</strong> - complete by EOD';
     return result
 }
