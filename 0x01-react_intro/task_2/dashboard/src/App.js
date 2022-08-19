@@ -1,5 +1,5 @@
 import logo from './Holberton-logo.jpg';
-import { getFooterCopy, getFullYear, getLatestNotification } from './utils'
+import { getFooterCopy, getFullYear } from './utils'
 import './App.css';
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
        <h1>School dashboard</h1>
       </header>
       <body className="App-body">
-        <p>Login to access the full dashboard {getLatestNotification()}</p>
+        <p>Login to access the full dashboard</p>
         <label for="e-mail"> Email </label>
         <input type="email" id="e-mail"/>
         <label for="pass"> Password </label>
