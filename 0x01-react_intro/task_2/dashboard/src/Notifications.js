@@ -1,5 +1,6 @@
 import React from 'react'
 import './Notifications.css'
+import { getLatestNotification } from './utils'
 
 const Notifications= () => {
 
@@ -9,8 +10,9 @@ const Notifications= () => {
         <ul>
          <li>New course available</li>
          <li>New resume available</li>
+         <getLatestNotifications />
         </ul>
-        <button style={{color:"#ffffff"}} aria-label="Close" onClick={console.log("Close button has been clicked")}>
+        <button style={{color:'white'}} aria-label="Close" onClick={console.log("Close button has been clicked")}>
          <img src='./favicon.ico' alt='close-button icon'/>
         </button>
     </div>
