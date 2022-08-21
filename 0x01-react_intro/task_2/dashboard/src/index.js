@@ -10,11 +10,12 @@ root.render(
   </React.StrictMode>
 );
 
-ReactDOM.render(
+const rootNotifications = ReactDOM.createRoot(document.getElementById('root-notifications')
+);
+rootNotifications.render(
   <React.StrictMode>
-      <Notifications />
-  </React.StrictMode>, 
-  document.getElementById('root-notifications')
+    <Notifications />
+  </React.StrictMode>
 )
 
 // If you want to start measuring performance in your app, pass a function
