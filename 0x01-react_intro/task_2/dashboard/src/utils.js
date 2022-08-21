@@ -3,7 +3,7 @@ export function getFullYear () {
     return d.getFullYear();
 }
 
-export function getFooterCopy (isIndex) {
+export function getFooterCopy (isIndex=true) {
     if (isIndex) {
         let result="Holberton School";
         return result;
