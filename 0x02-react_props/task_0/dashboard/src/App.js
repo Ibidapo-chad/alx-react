@@ -1,8 +1,8 @@
 import React from 'react';
-//import './App.css';
+import './App.css';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
-//import Login from './Login/Login';
+import Login from './Login/Login';
 import Notifications from './Notifications';
 
 function App() {
@@ -10,9 +10,10 @@ function App() {
     <React.Fragment>
       <Notifications />
       <Header />
+      <Login />
       <Footer />
     </React.Fragment>
-  );
-}
+  )
+};
 
 export default App;
