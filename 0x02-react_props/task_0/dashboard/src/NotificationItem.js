@@ -3,7 +3,8 @@ import React from 'react';
 function NotificationItem(props) {
     return (
         <>
-            <li value={props.value} dangerouslySetInnerHTML={props.html} dataNotificationType={props.type}/>
+            <li dangerouslySetInnerHTML= {{__html: props.value ? props.value : props.html}}
+                datanotificationtype= {props.type} />
         </>
     )
 }
