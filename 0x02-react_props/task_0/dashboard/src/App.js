@@ -12,14 +12,14 @@ function App({isLoggedIn}) {
     <React.Fragment>
       <Notifications />
       <Header />
-      {isLoggedIn} ? <Login /> : <CourseList />
+      { isLoggedIn ? <Login /> : <CourseList />}
       <Footer />
     </React.Fragment>
   )
 };
 
 App.propTypes = {
-  isLoggedIn : bool
+  isLoggedIn : PropTypes.bool
 }
 
 App.defaultProps = {
