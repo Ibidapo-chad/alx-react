@@ -5,10 +5,10 @@ function CourseListRow({ isHeader, textSecondCell, textFirstCell }) {
     return (
         <tr>
             { (() => {
-                        if ({isHeader}) {
-                            if ({textSecondCell}===null)
+                        if (isHeader) {
+                            if (textSecondCell===null)
                                 return (<th colSpan="2">{textFirstCell}</th>)
-                            if ({textSecondCell} !== null) {
+                            if (textSecondCell !== null) {
                                 return (
                                     <>
                                         <th> {textFirstCell} </th>
@@ -30,7 +30,7 @@ function CourseListRow({ isHeader, textSecondCell, textFirstCell }) {
     )
 };
 
-CourseListRow.PropTypes = {
+CourseListRow.propTypes = {
     isHeader : PropTypes.bool,
     textFirstCell : PropTypes.string.isRequired,
     textSecondCell: PropTypes.string
