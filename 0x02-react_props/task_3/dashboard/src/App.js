@@ -1,27 +1,29 @@
-import logo from './Holberton-logo.jpg';
-import { getFooterCopy, getFullYear } from './utils'
+import React from 'react';
 import './App.css';
+import Header from './Header/Header';
+import Footer from './Footer/Footer';
+import Login from './Login/Login';
+import Notifications from './Notifications';
+import CourseList from './CourseList/CourseList';
+import PropTypes from 'prop-types';
 
-function App() {
+function App({isLoggedIn}) {
   return (
-    <div className="App">
-      <header className="App-header">
-       <img src={logo} alt="logo"/>
-       <h1>School dashboard</h1>
-      </header>
-      <body className="App-body">
-        <p>Login to access the full dashboard</p>
-        <label for="e-mail"> Email </label>
-        <input type="email" id="e-mail"/>
-        <label for="pass"> Password </label>
-        <input type="password" id="pass"/> 
-        <input type="button" value="OK"/>
-      </body>
-      <footer className="App-footer">
-        <p>Copyright {getFooterCopy()} - {getFullYear()}</p>
-      </footer>
-    </div>
-  );
+    <React.Fragment>
+      <Notifications />
+      <Header />
+      { isLoggedIn ? <Login /> : <CourseList />}
+      <Footer />
+    </React.Fragment>
+  )
+};
+
+App.propTypes = {
+  isLoggedIn : PropTypes.bool
+}
+
+App.defaultProps = {
+  isLoggedIn : false
 }
 
 export default App;
