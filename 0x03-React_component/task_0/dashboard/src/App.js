@@ -19,6 +19,16 @@ class App extends React.Component {
       {id: 2, name: 'Webpack', credit: 20}, 
       {id: 3, name: 'React', credit: 40}];
   }
+
+  componentDidMount() {
+
+  }
+
+  componentWillUnmount() {
+
+  }
+
+  
   render() {
     return (
       <React.Fragment>
