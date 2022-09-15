@@ -5,7 +5,61 @@ import PropTypes from 'prop-types';
 import './NotificationItemShape';
 import NotificationItemShape from './NotificationItemShape';
 
-const Notifications= ({displayDrawer, listnotifications}) => {
+class Notifications extends React.Component {
+   constructor(props) {
+      super(props);
+      this.displayDrawer= this.props.displayDrawer;
+      this.listnotifications= this.props.listnotifications;
+      this.markAsRead = this.markAsRead.bind(this)
+   };
+
+   markAsRead(id) {
+      console.log(`Notification ${id} has been marked as read`)
+   };
+
+   render() {
+      let clickMessage = () => console.log ('Close-button has been clicked');
+
+      return (
+         <>
+            <div className='menuItem'>Your notifications</div>
+            { !this.displayDrawer ? null : 
+               (<div className='Notifications'>
+                  <p> Here is a list of notifications</p>
+                  <ul>
+                     {this.listnotifications.length > 0 ? 
+                        this.listnotifications.map(({id, type, value, html}) => {
+                           return (
+                              <NotificationItem id={id} type={type} value={value} html={html} markAsRead={this.markAsRead}/>
+                           )
+                        }) :
+                        <NotificationItem type="" value="No course available" html="" markAsRead={this.markAsRead}/>
+                     }
+                  </ul>
+                  <button style={{color: '#ffffff'}} aria-label="Close" onClick={clickMessage}>
+                  <img src='./favicon.ico' alt='close-button icon'/>
+                  </button>
+               </div>)
+            }
+         </>
+      )
+   }
+}
+
+Notifications.propTypes = {
+   displayDrawer : PropTypes.bool,
+   listnotifications : PropTypes.arrayOf(NotificationItemShape),
+   id: PropTypes.number,
+   markAsRead: PropTypes.func
+}
+Notifications.defaultProps = {
+   displayDrawer : false,
+   listnotifications : []
+}
+
+export default Notifications
+
+/**const Notifications= ({displayDrawer, listnotifications}) => {
 
    let clickMessage = () => console.log ('Close-button has been clicked');
    return (
@@ -30,15 +84,5 @@ const Notifications= ({displayDrawer, listnotifications}) => {
             </div>)}
       </>
    )
-};
+}; */
 
-Notifications.propTypes = {
-   displayDrawer : PropTypes.bool,
-   listnotifications : PropTypes.arrayOf(NotificationItemShape) 
-}
-Notifications.defaultProps = {
-   displayDrawer : false,
-   listnotifications : []
-}
-
-export default Notifications
