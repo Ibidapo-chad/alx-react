@@ -1,13 +1,20 @@
 import React from 'react';
-import PropTypes from 'prop-types'
-function NotificationItem(props) {
-    return (
-        <>
-            <li dangerouslySetInnerHTML= {{__html: props.value ? props.value : props.html}}
-                datanotificationtype= {props.type} />
-        </>
-    )
+import PropTypes from 'prop-types';
+
+class NotificationItem extends React.Component {
+    render() {
+        const { type, value, html, markAsRead, id } = this.props;
+        return (
+            <>
+                <li dangerouslySetInnerHTML= {{__html: value ? value : html}}
+                    datanotificationtype= {type} 
+                    onClick= {() => markAsRead(id)}
+                />
+            </>
+        )
+    }
 }
+
 
 NotificationItem.propTypes = {
     html : PropTypes.exact({
@@ -21,3 +28,13 @@ NotificationItem.defaultProps = {
 }
 
 export default NotificationItem
+
+/**function NotificationItem(props) {
+    return (
+        <>
+            <li dangerouslySetInnerHTML= {{__html: props.value ? props.value : props.html}}
+                datanotificationtype= {props.type} 
+            />
+        </>
+    )
+}*/
