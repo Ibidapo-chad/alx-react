@@ -11,21 +11,33 @@ import { getLatestNotification } from './utils';
 class App extends React.Component {
   constructor(props) {
     super(props);
+
+    this.handleKeydown = this.handleKeydown.bind(this);
+
     this.state= {isLoggedIn: false}; //check how proptypes can be used in class based components
+
     this.notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
       {id: 2, type: 'urgent', value: 'New resume available', html: ''},
-      {id: 3, type: 'default', value: '', html: getLatestNotification()}];
+      {id: 3, type: 'default', value: '', html: getLatestNotification}];
+
+
     this.datar = [{id: 1, name: 'ES6', credit: 60}, 
       {id: 2, name: 'Webpack', credit: 20}, 
       {id: 3, name: 'React', credit: 40}];
   }
 
+  handleKeydown(e) {
+    if (e.ctrlKey && e.key === 'h') {
+      alert("Logging you out");
+      this.props.logOut()
+    }
+  }
   componentDidMount() {
-
+    document.addEventListener('keydown', this.handleKeydown)
   }
 
   componentWillUnmount() {
-
+    document.removeEventListener('keydown', this.handleKeydown)
   }
 
   
@@ -63,11 +75,15 @@ class App extends React.Component {
 
 
 App.propTypes = {
-  isLoggedIn : PropTypes.bool
+  isLoggedIn : PropTypes.bool,
+  logOut: PropTypes.func
 }
 
 App.defaultProps = {
-  isLoggedIn : false
+  isLoggedIn : false,
+  logOut: () => {
+    return;
+  }
 }
 
 export default App;
