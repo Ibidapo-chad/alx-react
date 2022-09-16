@@ -23,6 +23,7 @@ class Notifications extends React.Component {
       return (
          <>
             <div className='menuItem'>Your notifications</div>
+            {console.log(this.displayDrawer)}
             { !this.displayDrawer ? null : 
                (<div className='Notifications'>
                   <p> Here is a list of notifications</p>
@@ -30,7 +31,7 @@ class Notifications extends React.Component {
                      {this.listnotifications.length > 0 ? 
                         this.listnotifications.map(({id, type, value, html}) => {
                            return (
-                              <NotificationItem id={id} type={type} value={value} html={html} markAsRead={this.markAsRead}/>
+                              <NotificationItem key={id} id={id} type={type} value={value} html={html} markAsRead={this.markAsRead}/>
                            )
                         }) :
                         <NotificationItem type="" value="No course available" html="" markAsRead={this.markAsRead}/>
