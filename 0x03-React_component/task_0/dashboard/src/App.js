@@ -7,6 +7,9 @@ import Notifications from './Notifications';
 import CourseList from './CourseList/CourseList';
 import PropTypes from 'prop-types';
 import { getLatestNotification } from './utils';
+import BodySectionWithMarginBottom from './BodySection/BodySectionWithMarginBottom';
+import Bodysection from './BodySection/BodySection';
+
 
 class App extends React.Component {
   constructor(props) {
@@ -18,7 +21,7 @@ class App extends React.Component {
 
     this.notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
       {id: 2, type: 'urgent', value: 'New resume available', html: ''},
-      {id: 3, type: 'default', value: '', html: getLatestNotification}];
+      {id: 3, type: 'default', value: '', html: getLatestNotification()}];
 
 
     this.datar = [{id: 1, name: 'ES6', credit: 60}, 
@@ -46,7 +49,20 @@ class App extends React.Component {
       <React.Fragment>
         <Notifications listnotifications={this.notificationData}/>
         <Header />
-        { this.state.isLoggedIn ? <Login /> : <CourseList listCourses={this.datar}/>}
+        { this.state.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
+            <Login />
+          </BodySectionWithMarginBottom>)  : 
+          <BodySectionWithMarginBottom title='Course list'>
+            <CourseList listCourses={this.datar}/>
+          </BodySectionWithMarginBottom>}
+        <Bodysection title='News from school'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perspiciatis at tempora odio, necessitatibus repudiandae
+            reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
+            ipsa iste vero dolor voluptates.
+          </p>
+        </Bodysection>
         <Footer />
       </React.Fragment>
     )
