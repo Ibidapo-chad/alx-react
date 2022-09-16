@@ -1,7 +1,7 @@
 import React from "react";
-import PropTypes from "prop-types"
+//import PropTypes from "prop-types";
 
-function Bodysection({title}) {
+function Bodysection({title, children}) {
     return (
         <div className="bodysection">
             <h2>{title}</h2>
@@ -9,3 +9,5 @@ function Bodysection({title}) {
         </div>
     )
 }
+
+export default Bodysection
