@@ -3,32 +3,35 @@ import PropTypes from 'prop-types';
 import Courseshape from './CourseShape';
 import CourseListRow from './CourseListRow';
 import './CourseShape';
+import './CourseList.css'
 
 function CourseList({listCourses}) {
     return (
         <>
-            <thead>
-                <CourseListRow textFirstCell="Available courses" isHeader={true} />
-                <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true} />
-            </thead>
-            <tbody>
-              {
-                listCourses.length > 0 ? (
-                    listCourses.map((course) => {
-                        return(
-                            <CourseListRow 
-                                key={course.id}
-                                textFirstCell={course.name}
-                                textSecondCell={course.credit}
-                            />
-                        )
-                    })
-                ) :
-                (
-                    <CourseListRow textFirstCell='No course available yet' />
-                )
-              }  
-            </tbody>
+            <table>
+                <thead>
+                    <CourseListRow textFirstCell="Available courses" isHeader={true} />
+                    <CourseListRow textFirstCell="Course name" textSecondCell="Credit" isHeader={true} />
+                </thead>
+                <tbody>
+                {
+                    listCourses.length > 0 ? (
+                        listCourses.map((course) => {
+                            return(
+                                <CourseListRow 
+                                    key={course.id}
+                                    textFirstCell={course.name}
+                                    textSecondCell={course.credit}
+                                />
+                            )
+                        })
+                    ) :
+                    (
+                        <CourseListRow textFirstCell='No course available yet' />
+                    )
+                }  
+                </tbody>
+            </table>
         </>
     )
 };
