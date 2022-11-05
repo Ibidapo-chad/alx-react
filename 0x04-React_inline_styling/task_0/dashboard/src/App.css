@@ -32,7 +32,7 @@
 .App-header {
   background-color: #ffffff;
   color: white;
-  border-bottom: 2px solid #ec1506;
+  border-bottom: 2px solid #f33d30;
 }
 
 img {
@@ -42,19 +42,11 @@ img {
 
 h1 {
   font-family: Arial, Helvetica, sans-serif;
-  color: #ec1506;
+  color: #f33d30;
   position: relative;
   float: right;
   left: -68vw;
   top: 4vh;
-}
-
-.App-body {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: small;
-  border-bottom: 2px solid #ec1506;
-  box-sizing: content-box;
-  height: 65vh;
 }
 
 .App-footer {
