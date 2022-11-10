@@ -17,7 +17,7 @@ class App extends React.Component {
 
     this.handleKeydown = this.handleKeydown.bind(this);
 
-    this.state= {isLoggedIn: false}; //check how proptypes can be used in class based components
+    this.state= {displayDrawer: false}; //check how proptypes can be used in class based components
 
     this.notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
       {id: 2, type: 'urgent', value: 'New resume available', html: ''},
@@ -35,6 +35,15 @@ class App extends React.Component {
       this.props.logOut()
     }
   }
+
+  handleDisplayDrawer= () => {
+    this.setState({displayDrawer: true})
+  }
+
+  handleHideDrawer = () => {
+    this.setState({displayDrawer: false})
+  }
+
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown)
   }
@@ -47,7 +56,11 @@ class App extends React.Component {
   render() {
     return (
       <React.Fragment>
-        <Notifications listnotifications={this.notificationData}/>
+        <Notifications listnotifications={this.notificationData} 
+                        handleDisplayDrawer={this.handleDisplayDrawer}
+                        handleHideDrawer={this.handleHideDrawer}
+                        displayDrawer={this.state.displayDrawer}
+        />
         <Header />
         { this.state.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
             <Login />
