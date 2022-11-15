@@ -9,7 +9,7 @@ import PropTypes from 'prop-types';
 import { getLatestNotification } from './utils';
 import BodySectionWithMarginBottom from './BodySection/BodySectionWithMarginBottom';
 import Bodysection from './BodySection/BodySection';
-
+import { AppContext, defaultUser } from './AppContext';
 
 class App extends React.Component {
   constructor(props) {
@@ -17,7 +17,13 @@ class App extends React.Component {
 
     this.handleKeydown = this.handleKeydown.bind(this);
 
-    this.state= {displayDrawer: false}; //check how proptypes can be used in class based components
+    this.state= {
+      displayDrawer: false,
+      user: defaultUser,
+      logOut: () => {
+				this.setState({ user: defaultUser });
+			},
+    }; //check how proptypes can be used in class based components
 
     this.notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
       {id: 2, type: 'urgent', value: 'New resume available', html: ''},
@@ -52,6 +58,15 @@ class App extends React.Component {
     document.removeEventListener('keydown', this.handleKeydown)
   }
 
+  logIn(email, password) {
+		this.setState({
+			user: {
+				email: email,
+				password: password,
+				isLoggedIn: true,
+			},
+		});
+	}
   
   render() {
     return (
@@ -108,11 +123,5 @@ App.propTypes = {
   logOut: PropTypes.func
 }
 
-App.defaultProps = {
-  isLoggedIn : false,
-  logOut: () => {
-    return;
-  }
-}
 
 export default App;
