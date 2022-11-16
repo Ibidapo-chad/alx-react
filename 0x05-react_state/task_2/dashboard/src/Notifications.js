@@ -13,9 +13,14 @@ class Notifications extends React.Component {
       this.markAsRead = this.markAsRead.bind(this)
    };
 
+   /** 
    shouldComponentUpdate(nextProps) {
-		return nextProps.length > this.props.listNotifications.length;
-	}
+		return (
+         nextProps.length > this.props.listNotifications.length ||
+         nextProps.displayDrawer !== this.props.displayDrawer
+      )
+	};
+   */
 
    markAsRead(id) {
       console.log(`Notification ${id} has been marked as read`)
@@ -44,7 +49,7 @@ class Notifications extends React.Component {
                   <button style={{color: '#ffffff'}} aria-label="Close" onClick={clickMessage}>
                      <span className='line1'></span> {/**Remember to fix css transform for icon */}
                      <span className='line2'></span>
-                  <img src='./favicon.ico' alt='close-button icon'/>
+                     <img src='./favicon.ico' alt='close-button icon'/>
                   </button>
                </div>)
             }
@@ -61,7 +66,6 @@ Notifications.propTypes = {
 }
 Notifications.defaultProps = {
    displayDrawer : false,
-   listnotifications : []
 }
 
 export default Notifications
