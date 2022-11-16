@@ -9,7 +9,6 @@ class Login extends React.Component {
 		this.handleChangeEmail = this.handleChangeEmail.bind(this);
 		this.handleChangePassword = this.handleChangePassword.bind(this);
 		this.state = {
-			isLoggedIn: false,
 			email: '',
 			password: '',
 			enableSubmit: false,
@@ -18,6 +17,7 @@ class Login extends React.Component {
 
 	handleLoginSubmit(e) {
 		e.preventDefault();
+		this.props.logIn(this.state.email, this.state.password);
 		this.setState({ isLoggedIn: true });
 	}
 
