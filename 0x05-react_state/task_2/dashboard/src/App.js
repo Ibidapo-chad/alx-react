@@ -16,6 +16,7 @@ class App extends React.Component {
     super(props);
 
     this.handleKeydown = this.handleKeydown.bind(this);
+    this.logIn= this.logIn.bind(this);
 
     this.state= {
       displayDrawer: false,
@@ -28,7 +29,7 @@ class App extends React.Component {
     this.notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
       {id: 2, type: 'urgent', value: 'New resume available', html: ''},
       {id: 3, type: 'default', value: '', html: getLatestNotification()}];
-
+      //CHECK DATA TYPE VALIDATION FOR HTML
 
     this.datar = [{id: 1, name: 'ES6', credit: 60}, 
       {id: 2, name: 'Webpack', credit: 20}, 
@@ -69,6 +70,7 @@ class App extends React.Component {
 	}
   
   render() {
+
     return (
       <React.Fragment>
         <Notifications listnotifications={this.notificationData} 
@@ -77,8 +79,8 @@ class App extends React.Component {
                         displayDrawer={this.state.displayDrawer}
         />
         <Header />
-        { this.state.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
-            <Login />
+        { !this.state.user.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
+            <Login logIn= {this.logIn}/>
           </BodySectionWithMarginBottom>)  : 
           <BodySectionWithMarginBottom title='Course list'>
             <CourseList listCourses={this.datar}/>
