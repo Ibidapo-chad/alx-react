@@ -70,31 +70,34 @@ class App extends React.Component {
 	}
   
   render() {
-
+    const {user, logOut}= this.state;
+    
     return (
-      <React.Fragment>
-        <Notifications listnotifications={this.notificationData} 
-                        handleDisplayDrawer={this.handleDisplayDrawer}
-                        handleHideDrawer={this.handleHideDrawer}
-                        displayDrawer={this.state.displayDrawer}
-        />
-        <Header />
-        { !this.state.user.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
-            <Login logIn= {this.logIn}/>
-          </BodySectionWithMarginBottom>)  : 
-          <BodySectionWithMarginBottom title='Course list'>
-            <CourseList listCourses={this.datar}/>
-          </BodySectionWithMarginBottom>}
-        <Bodysection title='News from school'>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Perspiciatis at tempora odio, necessitatibus repudiandae
-            reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
-            ipsa iste vero dolor voluptates.
-          </p>
-        </Bodysection>
-        <Footer />
-      </React.Fragment>
+      <AppContext.Provider value={{ user, logOut }}>
+        <React.Fragment>
+          <Notifications listnotifications={this.notificationData} 
+                          handleDisplayDrawer={this.handleDisplayDrawer}
+                          handleHideDrawer={this.handleHideDrawer}
+                          displayDrawer={this.state.displayDrawer}
+          />
+          <Header />
+          { !this.state.user.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
+              <Login logIn= {this.logIn}/>
+            </BodySectionWithMarginBottom>)  : 
+            <BodySectionWithMarginBottom title='Course list'>
+              <CourseList listCourses={this.datar}/>
+            </BodySectionWithMarginBottom>}
+          <Bodysection title='News from school'>
+            <p>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit.
+              Perspiciatis at tempora odio, necessitatibus repudiandae
+              reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
+              ipsa iste vero dolor voluptates.
+            </p>
+          </Bodysection>
+          <Footer />
+        </React.Fragment>
+      </AppContext.Provider>
     )
   }
 }
