@@ -17,6 +17,7 @@ class App extends React.Component {
 
     this.handleKeydown = this.handleKeydown.bind(this);
     this.logIn= this.logIn.bind(this);
+    this.markNotificationAsRead= this.markNotificationAsRead.bind(this);
 
     this.state= {
       displayDrawer: false,
@@ -24,12 +25,11 @@ class App extends React.Component {
       logOut: () => {
 				this.setState({ user: defaultUser });
 			},
-    }; //check how proptypes can be used in class based components
-
-    this.notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
+      listnotifications: [{id: 1, type: 'default', value: 'New course available', html: ''},
       {id: 2, type: 'urgent', value: 'New resume available', html: ''},
-      {id: 3, type: 'default', value: '', html: getLatestNotification()}];
+      {id: 3, type: 'default', value: '', html: getLatestNotification()}],
       //CHECK DATA TYPE VALIDATION FOR HTML
+    };
 
     this.datar = [{id: 1, name: 'ES6', credit: 60}, 
       {id: 2, name: 'Webpack', credit: 20}, 
@@ -68,17 +68,26 @@ class App extends React.Component {
 			},
 		});
 	}
+
+  markNotificationAsRead(id) {
+    const read = this.state.listNotifications.filter(
+			(notification) => notification.id !== id
+		);
+
+		this.setState({ listNotifications: read });
+  }
   
   render() {
     const {user, logOut}= this.state;
-    
+
     return (
       <AppContext.Provider value={{ user, logOut }}>
         <React.Fragment>
-          <Notifications listnotifications={this.notificationData} 
+          <Notifications listnotifications={this.state.listnotifications} 
                           handleDisplayDrawer={this.handleDisplayDrawer}
                           handleHideDrawer={this.handleHideDrawer}
                           displayDrawer={this.state.displayDrawer}
+                          markNotificationAsRead={this.markNotificationAsRead}
           />
           <Header />
           { !this.state.user.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
