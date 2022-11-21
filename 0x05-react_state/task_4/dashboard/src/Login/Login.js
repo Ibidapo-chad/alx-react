@@ -51,6 +51,7 @@ class Login extends React.Component {
 							onChange={this.handleChangeEmail}
 							value={this.state.email}
 						/>
+						&nbsp;&nbsp;
 						<label htmlFor='password'>Password: </label>
 						<input
 							className={css(styles.noBorder)}
