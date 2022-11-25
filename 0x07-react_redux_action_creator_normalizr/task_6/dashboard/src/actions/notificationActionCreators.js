@@ -10,9 +10,15 @@ export const markAsRead = (index) => {
 	};
 };
 
+export const boundMarkAsRead = (index) => dispatch(markAsRead(index));
+
+
 export const setNotificationFilter = (filter) => {
     return {
 		type: SET_TYPE_FILTER,
 		filter: `"${filter}"`,
 	};
 };
+
+export const boundSetNotificationFilter = (filter) =>
+	dispatch(setNotificationFilter(filter));
