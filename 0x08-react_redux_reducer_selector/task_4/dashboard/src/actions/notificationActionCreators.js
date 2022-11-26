@@ -1,0 +1,53 @@
+import {
+	MARK_AS_READ,
+	SET_TYPE_FILTER,
+	FETCH_NOTIFICATIONS_SUCCESS,
+} from './notificationActionTypes';
+
+export const markAsRead = (index) => {
+	return {
+		type: MARK_AS_READ,
+		index,
+	};
+};
+
+export const boundMarkAsRead = (index) => dispatch(markAsRead(index));
+
+
+export const setNotificationFilter = (filter) => {
+    return {
+		type: SET_TYPE_FILTER,
+		filter: `"${filter}"`,
+	};
+};
+
+export const boundSetNotificationFilter = (filter) =>
+	dispatch(setNotificationFilter(filter));
+
+const DATA= [
+    {
+      id: 1,
+      type: "default",
+      value: "New course available"
+    },
+    {
+      id: 2,
+      type: "urgent",
+      value: "New resume available"
+    },
+    {
+      id: 3,
+      type: "urgent",
+      value: "New data available"
+    }
+];
+
+export function fetchNotificationsSuccess() {
+	return {
+		type: FETCH_NOTIFICATIONS_SUCCESS,
+		data: DATA
+	}
+}
+
+export const boundFetchNotificationsSuccess = () =>
+	dispatch(fetchNotificationsSuccess());
