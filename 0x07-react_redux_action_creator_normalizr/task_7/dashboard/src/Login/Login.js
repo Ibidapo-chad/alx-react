@@ -61,6 +61,7 @@ class Login extends React.Component {
 							onChange={this.handleChangePassword}
 							value={this.state.password}
 						/>
+						&nbsp;&nbsp;
 						<input
 							className={css(styles.yellowBorder)}
 							type='submit'
