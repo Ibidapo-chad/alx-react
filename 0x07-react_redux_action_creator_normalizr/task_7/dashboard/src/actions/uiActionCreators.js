@@ -48,12 +48,15 @@ export function loginFailure() {
 }
 
 export function loginRequest(email, password) {
-	return (dispatch) => {
+	return async (dispatch) => {
 		boundLogin(email, password);
 
-		return fetch('http://localhost:8564/login-success.json')
-			.then((res) => res.json())
-			.then((json) => dispatch(loginSuccess()))
-			.catch((error) => dispatch(loginFailure()));
+		try {
+			const res = await fetch('http://localhost:3000/login-success.json');
+			const json = await res.json();
+			return dispatch(loginSuccess());
+		} catch (error) {
+			return dispatch(loginFailure());
+		}
 	};
 }
