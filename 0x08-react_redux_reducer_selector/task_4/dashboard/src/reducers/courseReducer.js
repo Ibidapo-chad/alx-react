@@ -1,3 +1,5 @@
+import {Map} from 'immutable';
+
 import {
 	FETCH_COURSE_SUCCESS,
 	SELECT_COURSE,
@@ -6,7 +8,7 @@ import {
 
 const initialState = [];
 
-export function courseReducer(state = initialState, action) {
+export function courseReducer(state = Map(initialState), action) {
 	switch (action.type) {
 		case FETCH_COURSE_SUCCESS:
 			return action.data.map((course) => ({
