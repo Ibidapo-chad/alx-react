@@ -1,9 +1,9 @@
 import React from 'react';
 import BodySection from './BodySection';
-import './BodySectionWithMarginBottom.css';
+import './BodySectionWMB.css';
 import PropTypes from 'prop-types';
 
-const BodySectionWithMarginBottom = ({ title, children }) => {
+const BodySectionWMB = ({ title, children }) => {
 	return (
 		<div className='bodySectionWithMargin'>
 			<BodySection title={title}>{children}</BodySection>
@@ -11,7 +11,7 @@ const BodySectionWithMarginBottom = ({ title, children }) => {
 	);
 };
 
-BodySectionWithMarginBottom.propTypes = {
+BodySectionWMB.propTypes = {
 	title: PropTypes.string,
 	children: PropTypes.oneOfType([
 		PropTypes.arrayOf(PropTypes.node),
@@ -19,4 +19,4 @@ BodySectionWithMarginBottom.propTypes = {
 	]).isRequired,
 };
 
-export default BodySectionWithMarginBottom;
+export default BodySectionWMB;

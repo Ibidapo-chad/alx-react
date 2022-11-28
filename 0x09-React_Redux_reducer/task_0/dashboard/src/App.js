@@ -7,7 +7,7 @@ import Notifications from './Notifications';
 import CourseList from './CourseList/CourseList';
 import PropTypes from 'prop-types';
 import { getLatestNotification } from './utils';
-import BodySectionWithMarginBottom from './BodySection/BodySectionWithMarginBottom';
+import BodySectionWMB from './BodySection/BodySectionWMB';
 import Bodysection from './BodySection/BodySection';
 import { AppContext, defaultUser } from './AppContext';
 
@@ -92,12 +92,12 @@ class App extends React.Component {
                           markNotificationAsRead={this.markNotificationAsRead}
           />
           <Header />
-          { !isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
+          { !isLoggedIn ? (<BodySectionWMB title='Log in to continue'>
               <Login logIn= {this.logIn}/>
-            </BodySectionWithMarginBottom>)  : 
-            <BodySectionWithMarginBottom title='Course list'>
+            </BodySectionWMB>)  : 
+            <BodySectionWMB title='Course list'>
               <CourseList listCourses={this.datar}/>
-            </BodySectionWithMarginBottom>}
+            </BodySectionWMB>}
           <Bodysection title='News from school'>
             <p>
               Lorem ipsum dolor sit amet consectetur adipisicing elit.
