@@ -1,5 +1,5 @@
 import React from 'react';
-//import './App.css';
+import { connect } from 'react-redux';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
 import Login from './Login/Login';
@@ -80,6 +80,8 @@ class App extends React.Component {
   render() {
     const {user, logOut}= this.state;
 
+    const {isLoggedIn}= this.props;
+
     return (
       <AppContext.Provider value={{ user, logOut }}>
         <React.Fragment>
@@ -90,7 +92,7 @@ class App extends React.Component {
                           markNotificationAsRead={this.markNotificationAsRead}
           />
           <Header />
-          { !this.state.user.isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
+          { !isLoggedIn ? (<BodySectionWithMarginBottom title='Log in to continue'>
               <Login logIn= {this.logIn}/>
             </BodySectionWithMarginBottom>)  : 
             <BodySectionWithMarginBottom title='Course list'>
@@ -112,25 +114,13 @@ class App extends React.Component {
 }
 
 
-/**function App({isLoggedIn}) {
-  const datar = [{id: 1, name: 'ES6', credit: 60}, 
-    {id: 2, name: 'Webpack', credit: 20}, 
-    {id: 3, name: 'React', credit: 40}];
+export const mapStateToProps = (state) => {
+  return {
+    isLoggedIn: state.get("isUserLoggedIn"),
+  };
+};
 
-  const notificationData = [{id: 1, type: 'default', value: 'New course available', html: ''},
-    {id: 2, type: 'urgent', value: 'New resume available', html: ''},
-    {id: 3, type: 'default', value: '', html: getLatestNotification()}];
-   
-  return (
-    <React.Fragment>
-      <Notifications listnotifications={notificationData}/>
-      <Header />
-      { isLoggedIn ? <Login /> : <CourseList listCourses={datar}/>}
-      <Footer />
-    </React.Fragment>
-  )
-};*/
-
+export default connect(mapStateToProps)(App);
 
 App.propTypes = {
   isLoggedIn : PropTypes.bool,
@@ -138,4 +128,4 @@ App.propTypes = {
 }
 
 
-export default App;
+//export default App;
