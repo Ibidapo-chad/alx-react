@@ -113,8 +113,7 @@ class App extends React.Component {
   }
 }
 
-
-export const mapStateToProps = (state) => {
+const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.get("isUserLoggedIn"),
   };
