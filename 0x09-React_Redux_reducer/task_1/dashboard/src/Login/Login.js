@@ -39,7 +39,7 @@ class Login extends React.Component {
 		return (
 			<>
 				<div className={css(styles.appBody, styles.small)}>
-					<h1>Log in to continue</h1>
+					{/**<h1>Log in to continue</h1>*/}
 					<p>Login to access the full dashboard</p>
 					<form onSubmit={this.handleLoginSubmit}>
 						<label htmlFor='email'>Email: </label>

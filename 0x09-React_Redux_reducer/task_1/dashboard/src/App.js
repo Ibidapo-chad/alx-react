@@ -10,6 +10,10 @@ import { getLatestNotification } from './utils';
 import BodySectionWMB from './BodySection/BodySectionWMB';
 import Bodysection from './BodySection/BodySection';
 import { AppContext, defaultUser } from './AppContext';
+import {
+	displayNotificationDrawer,
+	hideNotificationDrawer,
+} from './actions/uiActionCreators';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,7 +24,6 @@ class App extends React.Component {
     this.markNotificationAsRead= this.markNotificationAsRead.bind(this);
 
     this.state= {
-      displayDrawer: false,
       user: defaultUser,
       logOut: () => {
 				this.setState({ user: defaultUser });
@@ -43,14 +46,6 @@ class App extends React.Component {
     }
   }
 
-  handleDisplayDrawer= () => {
-    this.setState({displayDrawer: true})
-  }
-
-  handleHideDrawer = () => {
-    this.setState({displayDrawer: false})
-  }
-
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown)
   }
@@ -70,7 +65,7 @@ class App extends React.Component {
 	}
 
   markNotificationAsRead(id) {
-    const read = this.state.listNotifications.filter(
+    const read = this.state.listnotifications.filter(
 			(notification) => notification.id !== id
 		);
 
@@ -80,19 +75,19 @@ class App extends React.Component {
   render() {
     const {user, logOut}= this.state;
 
-    const {isLoggedIn}= this.props;
+    const {isLoggedIn, displayDrawer, hideNotificationDrawer, displayNotificationDrawer}= this.props;
 
     return (
       <AppContext.Provider value={{ user, logOut }}>
         <React.Fragment>
           <Notifications listnotifications={this.state.listnotifications} 
-                          handleDisplayDrawer={this.handleDisplayDrawer}
-                          handleHideDrawer={this.handleHideDrawer}
-                          displayDrawer={this.state.displayDrawer}
+                          handleDisplayDrawer={displayNotificationDrawer}
+                          handleHideDrawer={hideNotificationDrawer}
+                          displayDrawer={displayDrawer}
                           markNotificationAsRead={this.markNotificationAsRead}
           />
           <Header />
-          { !isLoggedIn ? (<BodySectionWMB title='Log in to continue'>
+          { !isLoggedIn ? (<BodySectionWMB title='Kindly Sign In'>
               <Login logIn= {this.logIn}/>
             </BodySectionWMB>)  : 
             <BodySectionWMB title='Course list'>
@@ -116,15 +111,20 @@ class App extends React.Component {
 const mapStateToProps = (state) => {
   return {
     isLoggedIn: state.get("isUserLoggedIn"),
+    displayDrawer: state.get("isNotificationDrawerVisible"),
   };
 };
 
-export default connect(mapStateToProps)(App);
+const mapDispatchToProps = {
+  displayNotificationDrawer,
+	hideNotificationDrawer,
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
   isLoggedIn : PropTypes.bool,
   logOut: PropTypes.func
 }
-
 
 //export default App;

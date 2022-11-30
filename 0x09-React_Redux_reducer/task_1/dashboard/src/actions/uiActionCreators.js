@@ -6,7 +6,7 @@ import {
 	LOGIN_SUCCESS,
 	LOGIN_FAILURE,
 } from './uiActionTypes';
-import fetch from 'node-fetch';
+const fetch = (...args) => import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 export function login(email, password) {
 	return {
@@ -15,24 +15,24 @@ export function login(email, password) {
 	};
 }
 
-export const boundLogin = (email, password) => dispatch(login(email, password));
+export const boundLogin = (email, password, dispatch) => dispatch(login(email, password));
 
 export const logout = () => ({ type: LOGOUT });
 
-export const boundLogout = () => dispatch(logout());
+export const boundLogout = (dispatch) => dispatch(logout());
 
 export const displayNotificationDrawer = () => ({
 	type: DISPLAY_NOTIFICATION_DRAWER,
 });
 
-export const boundDisplayNotificationDrawer = () =>
+export const boundDisplayNotificationDrawer = (dispatch) =>
 	dispatch(displayNotificationDrawer());
 
 export const hideNotificationDrawer = () => ({
 	type: HIDE_NOTIFICATION_DRAWER,
 });
 
-export const boundHideNotificationDrawer = () =>
+export const boundHideNotificationDrawer = (dispatch) =>
 	dispatch(hideNotificationDrawer());
 
 export function loginSuccess() {

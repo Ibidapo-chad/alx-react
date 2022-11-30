@@ -13,7 +13,7 @@ export const initialState= {
     isNotificationDrawerVisible: false,
     isUserLoggedIn: false,
     user: {}
-}
+};
 
 export default function uiReducer(state = Map(initialState), action) {
 	switch (action.type) {

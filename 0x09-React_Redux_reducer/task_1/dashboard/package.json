@@ -8,7 +8,7 @@
     "@testing-library/user-event": "^13.5.0",
     "aphrodite": "^2.4.0",
     "immutable": "^4.1.0",
-    "node-fetch": "^3.3.0",
+    "node-fetch": "^2.6.7",
     "normalizr": "^3.6.2",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
@@ -46,7 +46,6 @@
     ]
   },
   "homepage": "http://ibidapo-chad.github.io/alx-react",
-
   "devDependencies": {
     "gh-pages": "^4.0.0"
   }
