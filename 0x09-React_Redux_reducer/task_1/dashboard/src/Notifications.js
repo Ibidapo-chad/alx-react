@@ -41,7 +41,7 @@ class Notifications extends React.PureComponent {
                   <button style={{color: '#ffffff'}} aria-label="Close" onClick={clickMessage}>
                      <span className='line1'></span> {/**Remember to fix css transform for icon */}
                      <span className='line2'></span>
-                     <img src='./favicon.ico' alt='close-button icon'/>
+                     <img src='./close-icon.png' alt='close-button icon'/>
                   </button>
                </div>)
             }
