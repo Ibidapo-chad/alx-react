@@ -127,4 +127,12 @@ App.propTypes = {
   logOut: PropTypes.func
 }
 
+App.defaultProps = {
+  isLoggedIn: false,
+  displayDrawer: false,
+  displayNotificationDrawer: () => {},
+  hideNotificationDrawer: () => {},
+  login: () => {},
+};
+
 //export default App;
