@@ -1,6 +1,8 @@
+import '../css/main.css';
 const $ = require('jquery');
 const _ = require('lodash');
 
+$('body').append('<div id="logo"></div>');
 $('body').append('<p>Holberton Dashboard</p>');
 $('body').append('<p>Dashboard data for the students</p>');
 $('body').append('<button>Click here to get started</button>');
