@@ -65,7 +65,6 @@ class Login extends React.Component {
 						<input
 							className={css(styles.yellowBorder)}
 							type='submit'
-							value='OK'
 							disabled={!this.state.enableSubmit}
 						/>
 					</form>

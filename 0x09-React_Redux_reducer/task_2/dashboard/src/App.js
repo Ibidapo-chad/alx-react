@@ -13,6 +13,8 @@ import { AppContext, defaultUser } from './AppContext';
 import {
 	displayNotificationDrawer,
 	hideNotificationDrawer,
+  loginRequest,
+  logout,
 } from './actions/uiActionCreators';
 
 class App extends React.Component {
@@ -73,37 +75,41 @@ class App extends React.Component {
   }
   
   render() {
-    const {user, logOut}= this.state;
 
-    const {isLoggedIn, displayDrawer, hideNotificationDrawer, displayNotificationDrawer}= this.props;
+    const {
+      isLoggedIn,
+      displayDrawer,
+      displayNotificationDrawer,
+      hideNotificationDrawer,
+      login,
+      logout,
+    } = this.props;
 
     return (
-      <AppContext.Provider value={{ user, logOut }}>
-        <React.Fragment>
-          <Notifications listnotifications={this.state.listnotifications} 
-                          handleDisplayDrawer={displayNotificationDrawer}
-                          handleHideDrawer={hideNotificationDrawer}
-                          displayDrawer={displayDrawer}
-                          markNotificationAsRead={this.markNotificationAsRead}
-          />
-          <Header />
-          { !isLoggedIn ? (<BodySectionWMB title='Kindly Sign In'>
-              <Login logIn= {this.logIn}/>
-            </BodySectionWMB>)  : 
-            <BodySectionWMB title='Course list'>
-              <CourseList listCourses={this.datar}/>
-            </BodySectionWMB>}
-          <Bodysection title='News from school'>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Perspiciatis at tempora odio, necessitatibus repudiandae
-              reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
-              ipsa iste vero dolor voluptates.
-            </p>
-          </Bodysection>
-          <Footer />
-        </React.Fragment>
-      </AppContext.Provider>
+      <React.Fragment>
+        <Notifications listnotifications={this.state.listnotifications} 
+                        handleDisplayDrawer={displayNotificationDrawer}
+                        handleHideDrawer={hideNotificationDrawer}
+                        displayDrawer={displayDrawer}
+                        markNotificationAsRead={this.markNotificationAsRead}
+        />
+        <Header />
+        { !isLoggedIn ? (<BodySectionWMB title='Kindly Sign In'>
+            <Login logIn= {login}/>
+          </BodySectionWMB>)  : 
+          <BodySectionWMB title='Course list'>
+            <CourseList listCourses={this.datar}/>
+          </BodySectionWMB>}
+        <Bodysection title='News from school'>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            Perspiciatis at tempora odio, necessitatibus repudiandae
+            reiciendis cum nemo sed asperiores ut molestiae eaque aliquam illo
+            ipsa iste vero dolor voluptates.
+          </p>
+        </Bodysection>
+        <Footer />
+      </React.Fragment>
     )
   }
 }
@@ -118,13 +124,18 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = {
   displayNotificationDrawer,
 	hideNotificationDrawer,
+  login: loginRequest,
+  logout,
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
 App.propTypes = {
-  isLoggedIn : PropTypes.bool,
-  logOut: PropTypes.func
+  isLoggedIn: PropTypes.bool,
+  displayDrawer: PropTypes.bool,
+  displayNotificationDrawer: PropTypes.func,
+  hideNotificationDrawer: PropTypes.func,
+  login: PropTypes.func,
 }
 
 App.defaultProps = {
