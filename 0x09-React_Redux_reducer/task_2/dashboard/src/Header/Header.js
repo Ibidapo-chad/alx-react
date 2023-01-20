@@ -1,7 +1,7 @@
 import logo from '../Holberton-logo.jpg';
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
-import {AppContext} from '../AppContext'
+import {AppContext} from '../App/AppContext'
 
 class Header extends React.Component {
 	render() {

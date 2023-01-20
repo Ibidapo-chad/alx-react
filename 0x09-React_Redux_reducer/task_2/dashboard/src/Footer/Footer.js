@@ -1,6 +1,6 @@
 import { getFooterCopy, getFullYear } from '../utils'
 import React from 'react';
-import { AppContext } from '../AppContext';
+import { AppContext } from '../App/AppContext';
 
 function Footer() {
     return (
