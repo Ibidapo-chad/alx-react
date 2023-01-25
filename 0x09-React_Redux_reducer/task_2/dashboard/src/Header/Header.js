@@ -1,4 +1,4 @@
-import logo from '../Holberton-logo.jpg';
+import logo from '../assets/Holberton-logo.jpg';
 import React from 'react';
 import { StyleSheet, css } from 'aphrodite';
 import {AppContext} from '../App/AppContext'
