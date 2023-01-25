@@ -6,7 +6,7 @@ import Login from '../Login/Login';
 import Notifications from '../Notifications/Notifications';
 import CourseList from '../CourseList/CourseList';
 import PropTypes from 'prop-types';
-import { getLatestNotification } from '../utils';
+import { getLatestNotification } from '../Utility/utils';
 import BodySectionWMB from '../BodySection/BodySectionWMB';
 import Bodysection from '../BodySection/BodySection';
 import { AppContext, defaultUser } from './AppContext';
