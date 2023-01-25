@@ -1,9 +1,10 @@
 import React from 'react'
 import './Notifications.css'
-import NotificationItem from '../NotificationItem'
+import NotificationItem from './NotificationItem'
 import PropTypes from 'prop-types';
-import '../NotificationItemShape';
-import NotificationItemShape from '../NotificationItemShape';
+import './NotificationItemShape';
+import NotificationItemShape from './NotificationItemShape';
+import close from '../assets/close-icon.png'
 
 class Notifications extends React.PureComponent {
    constructor(props) {
@@ -41,7 +42,7 @@ class Notifications extends React.PureComponent {
                   <button style={{color: '#ffffff'}} aria-label="Close" onClick={clickMessage}>
                      <span className='line1'></span> {/**Remember to fix css transform for icon */}
                      <span className='line2'></span>
-                     <img src='./close-icon.png' alt='close-button icon'/>
+                     <img src={close} alt='close-button icon'/>
                   </button>
                </div>)
             }

@@ -1,4 +1,4 @@
-import { getFooterCopy, getFullYear } from '../utils'
+import { getFooterCopy, getFullYear } from '../Utility/utils'
 import React from 'react';
 import { AppContext } from '../App/AppContext';
 
