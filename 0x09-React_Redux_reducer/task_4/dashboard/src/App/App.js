@@ -39,22 +39,22 @@ class App extends React.Component {
     this.datar = [{id: 1, name: 'ES6', credit: 60}, 
       {id: 2, name: 'Webpack', credit: 20}, 
       {id: 3, name: 'React', credit: 40}];
-  }
+  };
 
   handleKeydown(e) {
     if (e.ctrlKey && e.key === 'h') {
       alert("Logging you out");
       this.props.logOut()
     }
-  }
+  };
 
   componentDidMount() {
     document.addEventListener('keydown', this.handleKeydown)
-  }
+  };
 
   componentWillUnmount() {
     document.removeEventListener('keydown', this.handleKeydown)
-  }
+  };
 
   logIn(email, password) {
 		this.setState({
@@ -64,7 +64,7 @@ class App extends React.Component {
 				isLoggedIn: true,
 			},
 		});
-	}
+	};
 
   markNotificationAsRead(id) {
     const read = this.state.listnotifications.filter(
@@ -72,7 +72,7 @@ class App extends React.Component {
 		);
 
 		this.setState({ listNotifications: read });
-  }
+  };
   
   render() {
 
@@ -112,12 +112,12 @@ class App extends React.Component {
       </React.Fragment>
     )
   }
-}
+};
 
 const mapStateToProps = (state) => {
   return {
-    isLoggedIn: state.get("isUserLoggedIn"),
-    displayDrawer: state.get("isNotificationDrawerVisible"),
+    isLoggedIn: state.ui.get("isUserLoggedIn"),
+    displayDrawer: state.ui.get("isNotificationDrawerVisible"),
   };
 };
 
@@ -126,7 +126,7 @@ const mapDispatchToProps = {
 	hideNotificationDrawer,
   login: loginRequest,
   logout,
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(App);
 
@@ -136,7 +136,7 @@ App.propTypes = {
   displayNotificationDrawer: PropTypes.func,
   hideNotificationDrawer: PropTypes.func,
   login: PropTypes.func,
-}
+};
 
 App.defaultProps = {
   isLoggedIn: false,
