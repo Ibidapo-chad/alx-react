@@ -7,12 +7,12 @@ import {
 } from '../actions/notificationActionTypes';
 
 
-const initialState = {
+export const initialNotificationState = {
 	notifications: [],
 	filter: 'DEFAULT',
 };
 
-export function notificationReducer(state = Map(initialState), action) {
+const notificationReducer= (state = Map(initialNotificationState), action) => {
 	switch (action.type) {
 		case FETCH_NOTIFICATIONS_SUCCESS:
 			const notificationData = action.data.map((item) => ({
@@ -44,4 +44,6 @@ export function notificationReducer(state = Map(initialState), action) {
 		default:
 			return state;
 	}
-}
+};
+
+export default notificationReducer;

@@ -6,9 +6,9 @@ import {
 	UNSELECT_COURSE,
 } from '../actions/courseActionTypes';
 
-const initialState = [];
+export const initialCourseState = [];
 
-export function courseReducer(state = Map(initialState), action) {
+const courseReducer= (state= Map(initialCourseState), action) => {
 	switch (action.type) {
 		case FETCH_COURSE_SUCCESS:
 			return action.data.map((course) => ({
@@ -38,4 +38,6 @@ export function courseReducer(state = Map(initialState), action) {
 		default:
 			return state;
 	}
-}
+};
+
+export default courseReducer;
