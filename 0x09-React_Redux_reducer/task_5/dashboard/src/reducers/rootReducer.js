@@ -12,7 +12,7 @@ export const initialRootState = {
 
 const combineSliceReducers = {
     course: courseReducer,
-    notification: notificationReducer,
+    notifications: notificationReducer,
     ui: uiReducer
 };
 
