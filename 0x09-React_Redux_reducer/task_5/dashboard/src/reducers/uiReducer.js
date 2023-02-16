@@ -12,7 +12,7 @@ import { DISPLAY_NOTIFICATION_DRAWER,
 export const initialReducerState= {
     isNotificationDrawerVisible: false,
     isUserLoggedIn: false,
-    user: {}
+    user: null
 };
 
 const uiReducer= (state = Map(initialReducerState), action) => {
