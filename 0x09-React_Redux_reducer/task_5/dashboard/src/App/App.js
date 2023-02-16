@@ -23,17 +23,9 @@ class App extends React.Component {
 
     this.handleKeydown = this.handleKeydown.bind(this);
     this.logIn= this.logIn.bind(this);
-    this.markNotificationAsRead= this.markNotificationAsRead.bind(this);
 
     this.state= {
       user: defaultUser,
-      logOut: () => {
-				this.setState({ user: defaultUser });
-			},
-      listnotifications: [{id: 1, type: 'default', value: 'New course available', html: ''},
-      {id: 2, type: 'urgent', value: 'New resume available', html: ''},
-      {id: 3, type: 'default', value: '', html: getLatestNotification()}],
-      //CHECK DATA TYPE VALIDATION FOR HTML
     };
 
     this.datar = [{id: 1, name: 'ES6', credit: 60}, 
@@ -44,7 +36,7 @@ class App extends React.Component {
   handleKeydown(e) {
     if (e.ctrlKey && e.key === 'h') {
       alert("Logging you out");
-      this.props.logOut()
+      this.props.logout()
     }
   };
 
@@ -65,14 +57,6 @@ class App extends React.Component {
 			},
 		});
 	};
-
-  markNotificationAsRead(id) {
-    const read = this.state.listnotifications.filter(
-			(notification) => notification.id !== id
-		);
-
-		this.setState({ listNotifications: read });
-  };
   
   render() {
 
