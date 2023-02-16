@@ -6,7 +6,7 @@ import { combineReducers } from "redux";
 
 export const initialRootState = {
     course: Map(initialCourseState),
-    notification: Map(initialNotificationState),
+    notifications: Map(initialNotificationState),
     ui: Map(initialReducerState),
 };
 
