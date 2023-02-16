@@ -1,4 +1,6 @@
 import React from 'react'
+import { connect } from 'react-redux';
+import { fetchNotifications } from '../actions/notificationActionCreators';
 import './Notifications.css'
 import NotificationItem from './NotificationItem'
 import PropTypes from 'prop-types';
@@ -10,6 +12,11 @@ class Notifications extends React.PureComponent {
    constructor(props) {
       super(props);
    }
+
+   componentDidMount() {
+		this.props.fetchNotifications();
+	}
+
    render() {
       const { displayDrawer,
                listnotifications,
@@ -55,13 +62,24 @@ Notifications.propTypes = {
    displayDrawer : PropTypes.bool,
    listnotifications : PropTypes.arrayOf(NotificationItemShape),
    id: PropTypes.number,
-   markNotificationAsRead: PropTypes.func
+   markNotificationAsRead: PropTypes.func,
 }
 Notifications.defaultProps = {
    displayDrawer : false,
    listnotifications: [],
 	handleDisplayDrawer: () => {},
 	markNotificationAsRead: () => {},
+   fetchNotifications: () => {},
 }
 
-export default Notifications
+const mapStateToProps = (state) => {
+	return {
+		listnotifications: state.notifications.get('messages'),
+	};
+};
+
+const mapDispatchToProps = {
+	fetchNotifications,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Notifications);
