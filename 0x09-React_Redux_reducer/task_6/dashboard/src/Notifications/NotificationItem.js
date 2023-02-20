@@ -1,40 +1,103 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
+import { StyleSheet, css } from "aphrodite";
 
-class NotificationItem extends React.PureComponent {
-    render() {
-        const { type, value, html, markAsRead, id } = this.props;
-        return (
-            <>
-                <li dangerouslySetInnerHTML= {{__html: value ? value : html}}
-                    datanotificationtype= {type} 
-                    onClick= {() => markAsRead(id)}
-                />
-            </>
-        )
+const NotificationItem = React.memo(function NotificationItem({
+  type,
+  value,
+  html,
+  markAsRead,
+  id,
+}) {
+  let listItem;
+
+  let typeStyle = css(type === "urgent" ? styles.urgent : styles.default);
+
+  if (value) {
+    if (type === "noNotifications") {
+      listItem = (
+        <li
+          className={css(styles.noNotifications)}
+          data-notification-type={type}
+        >
+          {value}
+        </li>
+      );
+    } else {
+      listItem = (
+        <li
+          className={typeStyle}
+          data-notification-type={type}
+          onClick={() => markAsRead(id)}
+        >
+          {value}
+        </li>
+      );
     }
-}
+  } else {
+    listItem = (
+      <li
+        className={typeStyle}
+        data-notification-type={type}
+        dangerouslySetInnerHTML={html}
+        onClick={() => markAsRead(id)}
+      ></li>
+    );
+  }
 
+  return listItem;
+});
+
+NotificationItem.defaultProps = {
+  type: "default",
+  value: "",
+  html: {},
+  markAsRead: () => {},
+  id: NaN,
+};
 
 NotificationItem.propTypes = {
-    html : PropTypes.exact({
-        __html: PropTypes.string
-    }),
-    type : PropTypes.string,
-    value : PropTypes.string
-}
-NotificationItem.defaultProps = {
-    type : "default"
-}
+  type: PropTypes.string,
+  value: PropTypes.string,
+  html: PropTypes.shape({
+    __html: PropTypes.string,
+  }),
+  markAsRead: PropTypes.func,
+  id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+};
 
-export default NotificationItem
+const screenSize = {
+  small: "@media screen and (max-width: 900px)",
+};
 
-/**function NotificationItem(props) {
-    return (
-        <>
-            <li dangerouslySetInnerHTML= {{__html: props.value ? props.value : props.html}}
-                datanotificationtype= {props.type} 
-            />
-        </>
-    )
-}*/
+const listItemSmall = {
+  listStyle: "none",
+  borderBottom: "1px solid black",
+  padding: "10px 8px",
+  fontSize: "20px",
+};
+
+const styles = StyleSheet.create({
+  default: {
+    color: "blue",
+    ":hover": {
+      cursor: "pointer",
+    },
+    [screenSize.small]: listItemSmall,
+  },
+
+  urgent: {
+    color: "red",
+    ":hover": {
+      cursor: "pointer",
+    },
+    [screenSize.small]: listItemSmall,
+  },
+
+  noNotifications: {
+    color: "black",
+    [screenSize.small]: listItemSmall,
+  },
+});
+
+export default NotificationItem;
